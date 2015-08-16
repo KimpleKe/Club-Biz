@@ -1,0 +1,75 @@
+<div class="society_info">
+	<%= image_tag @society.logo.url(:medium), class: "society_logo" %>	
+	<div class="society_details">
+		<h1>
+		  <%= @society.name %>
+		</h1>	
+		<h5>
+		  Number of Members: 
+		  <%= @society.joins.count %>
+		</h5>	
+		<h5>
+		  Website: 
+		  <%= link_to @society.website, @society.website %>
+		</h5>	
+		<h5>
+		  Description: 
+		  <%= @society.description %>
+		</h5>
+		<% if member_of?(@society) %>
+			<%= link_to "Join Society",join_society_path(@society), id: "button" %>
+		<% end %>
+		<% if admin?(@society) %>
+			<%= link_to "Edit Society Details", edit_society_path(@society), id: "button" %>
+		<% end %>
+	</div>
+</div>
+
+<div class="bearer">
+	<h2>Office Bearer</h2>
+	<table>
+		<thead>
+		    <tr>	  
+		      <th>Role</th>	    
+		      <th>Name</th>
+		      <th>Email</th>
+		      <th>Phone</th>	      
+		    </tr>
+		</thead>
+		<tbody>
+			<% @society.members.each do |member| %>
+			<tr>
+				<td><%= Join.find_by_member_id_and_society_id(member.id,@society.id).role %></td>
+				<td><%= member.name %></td>
+				<td><%= member.email %></td>
+				<td><%= member.phone %></td>
+			</tr>		
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div class="event">	
+	<%if admin?(@society)%>
+		<%= link_to "Create Event", new_society_event_path(@society), id: "button" %>
+    <% end %>
+	<table>
+		<thead>
+		    <tr>	  
+		      <th>Name</th>	    
+		      <th>Type</th>
+		      <th>Host</th>
+		      <th>Location</th>
+		    </tr>
+		</thead>
+		<tbody>
+			<% all_events(@society).each do |event| %>
+			<tr>
+				<td><%= link_to event.name, [@society, event] %></td>
+				<td><%= event.type %></td>
+				<td><%= event.society.name %></td>
+				<td><%= event.location %></td>
+			</tr>		
+			<% end %>
+		</tbody>
+	</table>
+</div>

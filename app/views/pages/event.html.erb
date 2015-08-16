@@ -1,0 +1,23 @@
+<div>
+	<h1>All events</h1>
+	<table>
+		<thead>
+		    <tr>	  
+		      <th>Name</th>	    
+		      <th>Type</th>
+		      <th>Host</th>
+		      <th>Website</th>     
+		    </tr>
+		</thead>
+		<tbody>
+			<% @events.try(:each) do |event|%>
+			<tr>
+				<td><%= link_to event.name, [event.society, event] %></td>
+				<td><%= event.type %></td>
+				<td><%= link_to event.society.name, event.society %></td>
+				<td><%= link_to event.website, event.website %></td>
+			</tr>
+  	        <% end %>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 
+  total: 1
+  price: 9.99
+  time: 2014-05-18 16:08:56
+  location: MyString
+
+two:
+  event_id: 
+  total: 1
+  price: 9.99
+  time: 2014-05-18 16:08:56
+  location: MyString

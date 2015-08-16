@@ -1,0 +1,262 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require bxslider
+ *= require_tree .
+ *= require jquery.ui.all
+ *= require gritter
+ *= require jquery-ui/redmond
+ *= require jquery.timepicker.css
+ */
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/assets/glyphicons-halflings-regular.eot');
+    src: url('/assets/glyphicons-halflings-regular?iefix') format('eot'),
+         url('/assets/glyphicons-halflings-regular.woff') format('woff'),
+         url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
+         url('/assets/glyphicons-halflings-regular.svg#webfont') format('svg');
+}
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
+.page{
+	margin: 0;
+	padding: 0;
+	min-height:100%;
+   	position:relative;
+}
+
+.row{
+	width: 100%;
+	margin: 0;
+}
+/* first row */
+.banner_top {
+    background: #35abd9;
+    height: 45px;
+}
+.banner_top .logo{
+	float: left;
+	margin: 10px;
+}
+.banner_top p,
+.banner_top a{
+	float: left;
+	font-size: 14px;
+    line-height: 45px;
+    color: #fff;
+}
+.banner_top a{
+	margin-right: 10px;
+}
+.banner_top .login p{
+	float: right;
+	margin-right: 30px;
+	text-align: right;
+}
+
+/* second row */
+.banner_second {
+	background-color: #BDD2FF;
+	height: 40px;
+}
+/* menu */
+.menu{
+	float: left;
+}
+.menu * {
+	list-style: none;
+}
+.menu ul {
+	text-transform: uppercase;
+	height: auto;
+	float: left;
+	margin-bottom: 1em;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.menu ul a, .menu ul span {
+	padding: .75em 1em;
+	color: #13a;
+}
+.menu ul ul {
+	text-transform: none;
+	text-shadow: none;
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	z-index: 99;
+	padding-left: 0px;
+}
+.menu ul li {
+	position: relative;
+	white-space: nowrap;
+	*white-space: normal;
+	-webkit-transition: background .2s;
+	transition: background .2s;
+}
+.menu ul > li {
+	float: left;
+}
+.menu ul li:hover > ul,
+.menu ul li.sfHover > ul {
+	display: block;
+	text-decoration: underline;	
+}
+.menu ul ul ul {
+	top: 0;
+	left: 100%;
+	padding-left: 0px;
+}
+.menu ul ul {
+	box-shadow: 2px 2px 6px rgba(0,0,0,.2);
+	min-width: 12em; 
+	*width: 12em; 
+	margin-top: 10px;
+}
+.menu ul ul li {
+	text-align:center;
+	font-size: 12px;
+	background: #AABDE6;
+	width: 13em;
+	height: 30px;
+	line-height: 30px;
+}
+.menu ul ul ul li {
+	background: #9AAEDB;
+}
+
+/* search */
+.search {
+	float: right;
+	margin-right: 40px;
+	vertical-align: middle;
+	position: relative;
+	bottom: 5px;
+}
+
+.search .select_box{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:20px; 
+    width: 120px; 
+}
+
+.search #search_input{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:20px; 
+    width: 200px; 
+}
+
+.text_field, #event_type{ 
+    background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 275px; 
+} 
+
+.bx-wrapper{
+	width: 600px;	
+}
+
+.bx-wrapper img{
+    display:block;
+    max-width: 100%;
+}
+
+/* date time */
+.date{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 130px; 
+}
+
+.time{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 85px; 
+}
+
+.description_field{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:275px; 
+    width: 275px;
+}
+
+.container{
+	padding-top: 30px;
+	padding-bottom: 150px;
+	width: 900px;
+}
+
+#button {
+	margin: 10px;	
+}
+
+/* footer */
+footer {
+	background-color: #D8D8D8;
+    height: 130px;
+    width:100%;
+    bottom: 0;
+    position:absolute;
+}
+.footer_info{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.footer_info p{
+	text-align: center;
+	.date{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 200px; 
+}
+

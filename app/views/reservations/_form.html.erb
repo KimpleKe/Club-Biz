@@ -1,0 +1,42 @@
+<%= form_for [@society, @event, @reservation] do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+      <% @reservation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <strong>Event:</strong>
+    <%= @event.name %>
+  </p>
+  <p>
+    <strong>Society:</strong>
+    <%= @event.society.name %>
+  </p>
+  <p>
+    <strong>Location:</strong>
+    <%= @event.location %>
+  </p>
+  <p>
+    <strong>Avaliable Tickets:</strong>
+    <%= remain_ticket(@event) %>
+  </p>
+  <p>
+    <strong>Price:</strong>
+    <%= @event.ticket.price %>
+  </p><br>
+  
+  <div class="field">
+    <%= f.label :quantity %> (Maximum:4 per member)<br>
+    <%= f.number_field :quantity, class:"text_field"%>
+  </div><br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

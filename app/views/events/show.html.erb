@@ -1,0 +1,76 @@
+<h1>
+  <%= @event.name %>
+</h1>
+<% if admin?(@society) %>
+	<%= link_to 'Edit', [:edit, @society, @event], id: "button" %>
+<% end %>
+<%= link_to 'Reserve', new_society_event_reservation_path(@society, @event), id: "button" %>
+
+<% if @event.pictures.count > 0 %>
+	<ul class="bxslider">
+	  <li><%= image_tag @event.pictures.first.try(:picture).try(:url, :large), class: "event_pictures" %></li>	
+	  <li><%= image_tag @event.pictures.second.try(:picture).try(:url, :large), class: "event_pictures" %></li>	
+	  <li><%= image_tag @event.pictures.third.try(:picture).try(:url, :large), class: "event_pictures" %></li>
+	</ul>
+<% end %>
+
+<p>
+  <strong>Type:</strong>
+  <%= @event.type %>
+</p>
+
+<p>
+  <strong>Begin time:</strong>
+  <%= @event.date_begin.strftime("%m/%d/%Y") %>
+  <%= @event.time_begin.strftime("%I:%M%p") %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @event.date_end.strftime("%m/%d/%Y") %>
+  <%= @event.time_end.strftime("%I:%M%p") %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= link_to @event.website, @event.website %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Remaining Tickets:</strong>
+  <%= remain_ticket(@event) %>
+</p>
+
+<p>
+  <strong>Tickets Price:</strong>
+  <%= @event.ticket.try(:price) %>
+</p>
+
+<%= link_to 'New Comment', new_society_event_comment_path(@society, @event), id: "button" %>
+<table>
+  <thead>
+    <tr>
+    	<th>Poster</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event.comments.each do |comment| %>
+      <tr>
+      	<td><%= comment.member.name %></td>
+        <td><%= comment.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

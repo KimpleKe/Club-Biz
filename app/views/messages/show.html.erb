@@ -1,0 +1,16 @@
+<p>
+  <strong>Sender:</strong>
+  <%= @message.sender.name %> [<%= @message.sender.email %>]
+</p>
+
+<p>
+  <strong>Receiver:</strong>
+  <%= @message.receiver.name %> [<%= @message.receiver.email %>]
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @message.content %>
+</p>
+
+<%= link_to 'Back', [@member, :messages] %>

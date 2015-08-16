@@ -1,0 +1,70 @@
+<h1>Profile</h1>
+<p>
+  <strong>Email:</strong>
+  <%= @member.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>Student ID:</strong>
+  <%= @member.student_id %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @member.phone %>
+</p>
+<% if @member == current_member%>
+	<p>You Have <strong><%= unread_message_count %></strong> Unread Messages.</p>
+	<%= link_to 'View Messages', [current_member, :messages], id: "button" %>
+	<%= link_to 'Edit Details', edit_member_path(@member), id: "button" %>
+	<%= link_to 'Change Password', change_password_member_path(@member), id: "button" %>	
+
+<h3>Societies</h3>
+<table>
+	<thead>
+	    <tr>	  	      	    
+	      <th>Soicety Name</th>
+	      <th>Role</th>
+	      <th>Website</th>	
+	      <th></th>      
+	    </tr>
+	</thead>
+	<tbody>
+		<% current_member.joins.each do |join| %>
+		<tr>
+			<td><%= link_to join.society.name, join.society %></td>
+			<td><%= join.role %></td>
+			<td><%= link_to join.society.website, join.society.website %></td>
+			<td></td>
+		</tr>		
+		<% end %>
+	</tbody>
+</table>
+
+<h3>Reservations</h3>
+<table>
+	<thead>
+	    <tr>	  	      	    
+	      <th>Event Name</th>
+	      <th>Host by</th>
+	      <th>Quantity</th>	
+	      <th></th>      
+	    </tr>
+	</thead>
+	<tbody>
+		<% current_member.reservations.each do |res| %>
+		<tr>
+			<td><%= link_to res.event.name, [res.event.society, res.event] %></td>
+			<td><%= link_to res.event.society.name, res.event.society %></td>
+			<td><%= res.quantity %></td>
+			<td><%= link_to 'Delete', [res.event.society, res.event, res], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>		
+		<% end %>
+	</tbody>
+</table>
+<% end %>

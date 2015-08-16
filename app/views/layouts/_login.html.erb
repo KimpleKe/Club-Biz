@@ -1,0 +1,15 @@
+<div class="login col-md-4">
+	<% if logged_in? %>
+		<p><%= link_to "Profile", current_member %> 
+		<%if unread_message_count > 0 %>
+			<strong><%= link_to "Messages(#{unread_message_count})", [current_member, :messages], class: "pulsate message" %></strong>
+		<% else %>
+			<%= link_to "Messages(#{unread_message_count})", [current_member, :messages], class: "message" %>
+		<% end %>
+		<%= link_to "Logout", logout_path %>
+		<span class="glyphicon glyphicon-user"></span> </p>
+	<% else %>
+		<p><%= link_to "Login", login_path %>
+			<span class="glyphicon glyphicon-user"></span> </p>
+	<% end %>
+</div>

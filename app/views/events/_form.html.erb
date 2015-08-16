@@ -1,0 +1,81 @@
+<%= form_for [@society, @event] do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div> 
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class:"text_field"%>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.select :type, options_for_select([["Expo"], ["Conferences"], ["Seminars"], ["Meeting"], ["Trade Show"], ["Business Dinners"], ["Networking"], ["Ceremony"], ["Theme Party"], ["Trade Fairs"]]), class:"text_field" %>
+  </div>
+  <div id="time_duration">
+	    <%= f.label :time_duration %><br>
+	    <input type="date" id="event_date_begin" name="event[date_begin]" class="date">
+	    <input type="text" id="event_time_begin" name="event[time_begin]" class="time"> to 
+	    <input type="date" id="event_date_end" name="event[date_end]" class="date">
+	    <input type="text" id="event_time_end" name="event[time_end]" class="time">
+  </div>
+  
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location, class:"text_field"%>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br>
+    <%= f.text_field :website, class:"text_field"%>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class:"description_field"%>
+  </div>
+  
+  <div class="group">
+  	  <h3>Share Event With Group:</h3>
+	  <%= f.fields_for :group do |g| %>  
+	  	<div class="field">
+			<%= g.label :name, "Group name"%><br>
+			<%= g.text_field :name, class:"text_field"%>
+		 </div>
+		 <div class="field">
+		  	<%= g.label :societylist, "Add societies"%><br>
+			<%= g.text_field :societylist, class:"society_auto_complete text_field"%>
+		</div>
+	  <% end -%> 
+  </div><br>
+  
+  <div class="picture">
+	  <h3>Upload Pictures:</h3>
+	  <%= f.fields_for :pictures do |p| %>  	
+	  	<%= p.file_field :picture %> 
+	  <% end -%>
+  </div><br>
+  
+  <div class="ticket">
+  	  <h3>Ticket Details:</h3>
+	  <%= f.fields_for :ticket do |t| %>  
+	  	<div class="field">
+			<%= t.label :total, "Quantity"%><br>
+			<%= t.number_field :total, class:"text_field"%>
+		 </div>
+		 <div class="field">
+		  	<%= t.label :price, "Price"%><br>
+			<%= t.number_field :price, step: "any", class:"text_field"%>
+		</div>
+	  <% end -%> 
+  </div><br><br> 
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
